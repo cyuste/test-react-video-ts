@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { withAuthenticator, Button, Heading } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
 
-function App() {
+import './App.css';
+import VideoPlayer from './components/video-player';
+
+
+function App(props: any) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Heading level={1}>Hello {props.user.username}</Heading>
+        <Button onClick={props.signOut}>Sign out</Button>
+        <VideoPlayer/>
       </header>
     </div>
   );
 }
 
-export default App;
+export default withAuthenticator(App);
