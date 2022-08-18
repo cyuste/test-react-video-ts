@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from "react";
 
 // This works
-//import { useViewer } from "../../react-kinesis-webrtc";
+import { useViewer } from "../../react-kinesis-webrtc";
 
 // This doesn't
-import { useViewer } from 'react-kinesis-webrtc';
+// import { useViewer } from 'react-kinesis-webrtc';
 
 function VideoFrame({config}: any) {
 

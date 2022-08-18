@@ -115,14 +115,12 @@ export function useViewer(
       logger.current.logViewer(`[${clientId.current}] signaling client opened`);
 
       // No lo tengo en el otro lado y solo se me ocurre que pueda ser por lo que no recibo SDP answer
-      /*
       if (viewerOnly) {
         peerConnection?.addTransceiver("video");
         peerConnection
           ?.getTransceivers()
           .forEach((t) => (t.direction = "recvonly"));
       }
-      */
 
       const sessionDescription = await peerConnection?.createOffer({
         offerToReceiveAudio: true,
