@@ -34,37 +34,17 @@ export function useSignalingClient(config: SignalingClientConfigOptions): {
 
     console.log('Vamos a crear un signaling client. Como esta la cosa?');
 
-    if (signalingClient) {
-      // Ya tenemos un signaling client, esperamos a que este cerrado para hacer uno nuevo
-      // porque si no el close de useViewer nos lo pisa
-
-      signalingClient.on("close", () => {
-        setSignalingClient(
-          new SignalingClient({
-            channelARN,
-            channelEndpoint,
-            clientId,
-            credentials: { accessKeyId, secretAccessKey, sessionToken },
-            region,
-            role,
-            systemClockOffset,
-          })
-        );
-      });
-      setSignalingClient(undefined);
-    } else {
-      setSignalingClient(
-        new SignalingClient({
-          channelARN,
-          channelEndpoint,
-          clientId,
-          credentials: { accessKeyId, secretAccessKey, sessionToken },
-          region,
-          role,
-          systemClockOffset,
-        })
-      );
-    }
+    setSignalingClient(
+      new SignalingClient({
+        channelARN,
+        channelEndpoint,
+        clientId,
+        credentials: { accessKeyId, secretAccessKey, sessionToken },
+        region,
+        role,
+        systemClockOffset,
+      })
+    );
   }, [
     accessKeyId,
     channelARN,
